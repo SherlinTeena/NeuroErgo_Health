@@ -1,0 +1,1511 @@
+{
+ "generated": "2026-10-28 11:46",
+ "seed": 42,
+ "models": {
+  "mental": {
+   "key": "mental",
+   "name": "Mental Well-being Support Need",
+   "pillar": "Cognitive",
+   "dataset": "OSMI Mental Health in Tech Survey 2014 (1,259 workers, 15 features)",
+   "source_url": "https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey",
+   "target": "Has sought mental-health treatment",
+   "note": "Ages outside 18-75 removed; gender mapped to 3 groups; exact duplicate respondents dropped; 'work_interfere' excluded as a target proxy.",
+   "n": 1246,
+   "n_features": 15,
+   "n_pos": 630,
+   "prevalence": 0.5056,
+   "n_train": 996,
+   "n_test": 250,
+   "best_model": "SVM (RBF)",
+   "best_params": {
+    "C": 0.5,
+    "gamma": "scale"
+   },
+   "models": [
+    {
+     "name": "Baseline (majority class)",
+     "cv_auc_mean": 0.5,
+     "cv_auc_std": 0.0,
+     "best_params": {},
+     "test": {
+      "accuracy": 0.504,
+      "precision": 0.504,
+      "recall": 1.0,
+      "specificity": 0.0,
+      "f1": 0.6702,
+      "roc_auc": 0.5,
+      "brier": 0.25,
+      "tn": 0,
+      "fp": 124,
+      "fn": 0,
+      "tp": 126
+     }
+    },
+    {
+     "name": "Logistic Regression",
+     "cv_auc_mean": 0.7589,
+     "cv_auc_std": 0.0249,
+     "best_params": {
+      "C": 0.03
+     },
+     "test": {
+      "accuracy": 0.716,
+      "precision": 0.7391,
+      "recall": 0.6746,
+      "specificity": 0.7581,
+      "f1": 0.7054,
+      "roc_auc": 0.7901,
+      "brier": 0.1908,
+      "tn": 94,
+      "fp": 30,
+      "fn": 41,
+      "tp": 85
+     }
+    },
+    {
+     "name": "Random Forest",
+     "cv_auc_mean": 0.7683,
+     "cv_auc_std": 0.0203,
+     "best_params": {
+      "max_depth": null,
+      "min_samples_leaf": 3,
+      "n_estimators": 300
+     },
+     "test": {
+      "accuracy": 0.712,
+      "precision": 0.7328,
+      "recall": 0.6746,
+      "specificity": 0.75,
+      "f1": 0.7025,
+      "roc_auc": 0.7657,
+      "brier": 0.1976,
+      "tn": 93,
+      "fp": 31,
+      "fn": 41,
+      "tp": 85
+     }
+    },
+    {
+     "name": "Gradient Boosting",
+     "cv_auc_mean": 0.7596,
+     "cv_auc_std": 0.0262,
+     "best_params": {
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "n_estimators": 200
+     },
+     "test": {
+      "accuracy": 0.712,
+      "precision": 0.7213,
+      "recall": 0.6984,
+      "specificity": 0.7258,
+      "f1": 0.7097,
+      "roc_auc": 0.7951,
+      "brier": 0.1848,
+      "tn": 90,
+      "fp": 34,
+      "fn": 38,
+      "tp": 88
+     }
+    },
+    {
+     "name": "SVM (RBF)",
+     "cv_auc_mean": 0.7706,
+     "cv_auc_std": 0.0254,
+     "best_params": {
+      "C": 0.5,
+      "gamma": "scale"
+     },
+     "test": {
+      "accuracy": 0.712,
+      "precision": 0.725,
+      "recall": 0.6905,
+      "specificity": 0.7339,
+      "f1": 0.7073,
+      "roc_auc": 0.7858,
+      "brier": 0.1894,
+      "tn": 91,
+      "fp": 33,
+      "fn": 39,
+      "tp": 87
+     }
+    },
+    {
+     "name": "Neural Network (MLP)",
+     "cv_auc_mean": 0.6976,
+     "cv_auc_std": 0.0267,
+     "best_params": {
+      "alpha": 0.1,
+      "hidden_layer_sizes": [
+       32
+      ]
+     },
+     "test": {
+      "accuracy": 0.66,
+      "precision": 0.6723,
+      "recall": 0.6349,
+      "specificity": 0.6855,
+      "f1": 0.6531,
+      "roc_auc": 0.6815,
+      "brier": 0.2862,
+      "tn": 85,
+      "fp": 39,
+      "fn": 46,
+      "tp": 80
+     }
+    }
+   ],
+   "final": {
+    "test": {
+     "accuracy": 0.712,
+     "precision": 0.725,
+     "recall": 0.6905,
+     "specificity": 0.7339,
+     "f1": 0.7073,
+     "roc_auc": 0.7858,
+     "brier": 0.1894,
+     "tn": 91,
+     "fp": 33,
+     "fn": 39,
+     "tp": 87
+    },
+    "ci": {
+     "roc_auc": [
+      0.7303439318295739,
+      0.8403859653667844
+     ],
+     "accuracy": [
+      0.656,
+      0.768
+     ],
+     "recall": [
+      0.6068376068376068,
+      0.7656376008064516
+     ]
+    },
+    "repeated_cv": {
+     "accuracy": {
+      "mean": 0.7135,
+      "std": 0.0222
+     },
+     "precision": {
+      "mean": 0.7217,
+      "std": 0.028
+     },
+     "recall": {
+      "mean": 0.7079,
+      "std": 0.0392
+     },
+     "f1": {
+      "mean": 0.7139,
+      "std": 0.024
+     },
+     "roc_auc": {
+      "mean": 0.7786,
+      "std": 0.0162
+     }
+    },
+    "calibration": [
+     {
+      "pred": 0.1711,
+      "obs": 0.1562,
+      "n": 96
+     },
+     {
+      "pred": 0.2877,
+      "obs": 0.2816,
+      "n": 316
+     },
+     {
+      "pred": 0.4832,
+      "obs": 0.5638,
+      "n": 149
+     },
+     {
+      "pred": 0.7148,
+      "obs": 0.6711,
+      "n": 301
+     },
+     {
+      "pred": 0.8467,
+      "obs": 0.8507,
+      "n": 134
+     }
+    ],
+    "importance": [
+     {
+      "feature": "family_history",
+      "mean": 0.1456,
+      "std": 0.0334
+     },
+     {
+      "feature": "care_options",
+      "mean": 0.0362,
+      "std": 0.0122
+     },
+     {
+      "feature": "Gender",
+      "mean": 0.0141,
+      "std": 0.0071
+     },
+     {
+      "feature": "leave",
+      "mean": 0.0131,
+      "std": 0.0062
+     },
+     {
+      "feature": "Age",
+      "mean": 0.0083,
+      "std": 0.0064
+     },
+     {
+      "feature": "coworkers",
+      "mean": 0.0066,
+      "std": 0.005
+     },
+     {
+      "feature": "mental_health_consequence",
+      "mean": 0.0063,
+      "std": 0.0055
+     },
+     {
+      "feature": "remote_work",
+      "mean": 0.004,
+      "std": 0.0034
+     },
+     {
+      "feature": "no_employees",
+      "mean": 0.0025,
+      "std": 0.0026
+     },
+     {
+      "feature": "seek_help",
+      "mean": 0.0004,
+      "std": 0.003
+     },
+     {
+      "feature": "benefits",
+      "mean": -0.0008,
+      "std": 0.0063
+     },
+     {
+      "feature": "tech_company",
+      "mean": -0.001,
+      "std": 0.0025
+     },
+     {
+      "feature": "supervisor",
+      "mean": -0.0016,
+      "std": 0.0048
+     },
+     {
+      "feature": "wellness_program",
+      "mean": -0.0031,
+      "std": 0.0028
+     },
+     {
+      "feature": "anonymity",
+      "mean": -0.0035,
+      "std": 0.0051
+     }
+    ],
+    "roc": {
+     "fpr": [
+      0.0,
+      0.0081,
+      0.0161,
+      0.0242,
+      0.0242,
+      0.0323,
+      0.0403,
+      0.0484,
+      0.0726,
+      0.0806,
+      0.0887,
+      0.0968,
+      0.0968,
+      0.1048,
+      0.121,
+      0.129,
+      0.1452,
+      0.1532,
+      0.1613,
+      0.1694,
+      0.1694,
+      0.1774,
+      0.1855,
+      0.1935,
+      0.2097,
+      0.2177,
+      0.2339,
+      0.25,
+      0.25,
+      0.2581,
+      0.2661,
+      0.2742,
+      0.2823,
+      0.2903,
+      0.3065,
+      0.3145,
+      0.3145,
+      0.3226,
+      0.3871,
+      0.3952,
+      0.4032,
+      0.4113,
+      0.4194,
+      0.4274,
+      0.4274,
+      0.4355,
+      0.4435,
+      0.4516,
+      0.4839,
+      0.5242,
+      0.5887,
+      0.6048,
+      0.6048,
+      0.7419,
+      0.7581,
+      0.8548,
+      0.871,
+      0.879,
+      0.9758,
+      1.0
+     ],
+     "tpr": [
+      0.0,
+      0.0,
+      0.119,
+      0.1984,
+      0.2222,
+      0.246,
+      0.3095,
+      0.3571,
+      0.3571,
+      0.3651,
+      0.4286,
+      0.4365,
+      0.4524,
+      0.5079,
+      0.5238,
+      0.5397,
+      0.5397,
+      0.5476,
+      0.5556,
+      0.5714,
+      0.5873,
+      0.6032,
+      0.6111,
+      0.619,
+      0.619,
+      0.627,
+      0.6429,
+      0.6508,
+      0.6587,
+      0.6667,
+      0.6984,
+      0.7143,
+      0.7143,
+      0.7302,
+      0.7381,
+      0.746,
+      0.754,
+      0.7857,
+      0.7937,
+      0.8095,
+      0.8095,
+      0.8175,
+      0.8254,
+      0.8413,
+      0.8492,
+      0.8651,
+      0.873,
+      0.8889,
+      0.8889,
+      0.8968,
+      0.9048,
+      0.9127,
+      0.9206,
+      0.9365,
+      0.9444,
+      0.9524,
+      0.9524,
+      0.9683,
+      0.9841,
+      1.0
+     ]
+    },
+    "confusion": [
+     [
+      91,
+      33
+     ],
+     [
+      39,
+      87
+     ]
+    ]
+   },
+   "data_summary": [
+    {
+     "feature": "Age",
+     "mean_neg": 31.55,
+     "mean_pos": 32.6,
+     "median": 31.0,
+     "levels": null
+    },
+    {
+     "feature": "Gender",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Male": 983,
+      "Female": 250,
+      "Other": 13
+     }
+    },
+    {
+     "feature": "family_history",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 760,
+      "Yes": 486
+     }
+    },
+    {
+     "feature": "remote_work",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 875,
+      "Yes": 371
+     }
+    },
+    {
+     "feature": "tech_company",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Yes": 1021,
+      "No": 225
+     }
+    },
+    {
+     "feature": "no_employees",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "6-25": 287,
+      "26-100": 287,
+      "More than 1000": 281,
+      "100-500": 174,
+      "1-5": 157,
+      "500-1000": 60
+     }
+    },
+    {
+     "feature": "benefits",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Yes": 472,
+      "Don't know": 407,
+      "No": 367
+     }
+    },
+    {
+     "feature": "care_options",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 498,
+      "Yes": 436,
+      "Not sure": 312
+     }
+    },
+    {
+     "feature": "wellness_program",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 834,
+      "Yes": 225,
+      "Don't know": 187
+     }
+    },
+    {
+     "feature": "seek_help",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 638,
+      "Don't know": 363,
+      "Yes": 245
+     }
+    },
+    {
+     "feature": "anonymity",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Don't know": 812,
+      "Yes": 372,
+      "No": 62
+     }
+    },
+    {
+     "feature": "leave",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Don't know": 559,
+      "Somewhat easy": 263,
+      "Very easy": 203,
+      "Somewhat difficult": 124,
+      "Very difficult": 97
+     }
+    },
+    {
+     "feature": "mental_health_consequence",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "No": 485,
+      "Maybe": 475,
+      "Yes": 286
+     }
+    },
+    {
+     "feature": "coworkers",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Some of them": 767,
+      "No": 257,
+      "Yes": 222
+     }
+    },
+    {
+     "feature": "supervisor",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Yes": 511,
+      "No": 388,
+      "Some of them": 347
+     }
+    }
+   ]
+  },
+  "sleep": {
+   "key": "sleep",
+   "name": "Sleep-Disorder Risk",
+   "pillar": "Physical",
+   "dataset": "Sleep Health & Lifestyle Dataset (374 records, 132 unique profiles, 12 features)",
+   "source_url": "https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset",
+   "target": "Sleep disorder (insomnia or apnoea) present",
+   "note": "374 rows contain only 132 distinct profiles; identical profiles are kept in the same CV/test fold (group-aware) to prevent leakage.",
+   "n": 374,
+   "n_features": 12,
+   "n_pos": 155,
+   "prevalence": 0.4144,
+   "n_train": 311,
+   "n_test": 63,
+   "best_model": "Logistic Regression",
+   "best_params": {
+    "C": 0.3
+   },
+   "models": [
+    {
+     "name": "Baseline (majority class)",
+     "cv_auc_mean": 0.5,
+     "cv_auc_std": 0.0,
+     "best_params": {},
+     "test": {
+      "accuracy": 0.5873,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "brier": 0.2424,
+      "tn": 37,
+      "fp": 0,
+      "fn": 26,
+      "tp": 0
+     }
+    },
+    {
+     "name": "Logistic Regression",
+     "cv_auc_mean": 0.9423,
+     "cv_auc_std": 0.0245,
+     "best_params": {
+      "C": 0.3
+     },
+     "test": {
+      "accuracy": 0.9206,
+      "precision": 0.8621,
+      "recall": 0.9615,
+      "specificity": 0.8919,
+      "f1": 0.9091,
+      "roc_auc": 0.9683,
+      "brier": 0.0521,
+      "tn": 33,
+      "fp": 4,
+      "fn": 1,
+      "tp": 25
+     }
+    },
+    {
+     "name": "Random Forest",
+     "cv_auc_mean": 0.9329,
+     "cv_auc_std": 0.0369,
+     "best_params": {
+      "max_depth": 4,
+      "min_samples_leaf": 5,
+      "n_estimators": 300
+     },
+     "test": {
+      "accuracy": 0.9365,
+      "precision": 0.8929,
+      "recall": 0.9615,
+      "specificity": 0.9189,
+      "f1": 0.9259,
+      "roc_auc": 0.9563,
+      "brier": 0.0565,
+      "tn": 34,
+      "fp": 3,
+      "fn": 1,
+      "tp": 25
+     }
+    },
+    {
+     "name": "Gradient Boosting",
+     "cv_auc_mean": 0.9174,
+     "cv_auc_std": 0.0457,
+     "best_params": {
+      "learning_rate": 0.1,
+      "max_depth": 3,
+      "n_estimators": 100
+     },
+     "test": {
+      "accuracy": 0.9683,
+      "precision": 0.9615,
+      "recall": 0.9615,
+      "specificity": 0.973,
+      "f1": 0.9615,
+      "roc_auc": 0.9626,
+      "brier": 0.0505,
+      "tn": 36,
+      "fp": 1,
+      "fn": 1,
+      "tp": 25
+     }
+    },
+    {
+     "name": "SVM (RBF)",
+     "cv_auc_mean": 0.9412,
+     "cv_auc_std": 0.0233,
+     "best_params": {
+      "C": 0.5,
+      "gamma": 0.01
+     },
+     "test": {
+      "accuracy": 0.9206,
+      "precision": 0.8621,
+      "recall": 0.9615,
+      "specificity": 0.8919,
+      "f1": 0.9091,
+      "roc_auc": 0.9704,
+      "brier": 0.0492,
+      "tn": 33,
+      "fp": 4,
+      "fn": 1,
+      "tp": 25
+     }
+    },
+    {
+     "name": "Neural Network (MLP)",
+     "cv_auc_mean": 0.9308,
+     "cv_auc_std": 0.0404,
+     "best_params": {
+      "alpha": 0.01,
+      "hidden_layer_sizes": [
+       32
+      ]
+     },
+     "test": {
+      "accuracy": 0.9365,
+      "precision": 0.8929,
+      "recall": 0.9615,
+      "specificity": 0.9189,
+      "f1": 0.9259,
+      "roc_auc": 0.9641,
+      "brier": 0.0566,
+      "tn": 34,
+      "fp": 3,
+      "fn": 1,
+      "tp": 25
+     }
+    }
+   ],
+   "final": {
+    "test": {
+     "accuracy": 0.9206,
+     "precision": 0.8621,
+     "recall": 0.9615,
+     "specificity": 0.8919,
+     "f1": 0.9091,
+     "roc_auc": 0.9683,
+     "brier": 0.0521,
+     "tn": 33,
+     "fp": 4,
+     "fn": 1,
+     "tp": 25
+    },
+    "ci": {
+     "roc_auc": [
+      0.9138245320301069,
+      1.0
+     ],
+     "accuracy": [
+      0.8571428571428571,
+      0.9841269841269841
+     ],
+     "recall": [
+      0.88,
+      1.0
+     ]
+    },
+    "repeated_cv": {
+     "accuracy": {
+      "mean": 0.928,
+      "std": 0.0286
+     },
+     "precision": {
+      "mean": 0.9085,
+      "std": 0.0529
+     },
+     "recall": {
+      "mean": 0.9226,
+      "std": 0.0562
+     },
+     "f1": {
+      "mean": 0.9137,
+      "std": 0.0355
+     },
+     "roc_auc": {
+      "mean": 0.9342,
+      "std": 0.0365
+     }
+    },
+    "calibration": [
+     {
+      "pred": 0.079,
+      "obs": 0.0621,
+      "n": 177
+     },
+     {
+      "pred": 0.731,
+      "obs": 0.8,
+      "n": 10
+     },
+     {
+      "pred": 0.8803,
+      "obs": 0.9167,
+      "n": 120
+     }
+    ],
+    "importance": [
+     {
+      "feature": "Diastolic",
+      "mean": 0.0376,
+      "std": 0.0152
+     },
+     {
+      "feature": "Systolic",
+      "mean": 0.0209,
+      "std": 0.0125
+     },
+     {
+      "feature": "Age",
+      "mean": 0.0096,
+      "std": 0.0067
+     },
+     {
+      "feature": "Heart Rate",
+      "mean": 0.0029,
+      "std": 0.0051
+     },
+     {
+      "feature": "BMI Category",
+      "mean": 0.0023,
+      "std": 0.0056
+     },
+     {
+      "feature": "Gender",
+      "mean": 0.0016,
+      "std": 0.0031
+     },
+     {
+      "feature": "Stress Level",
+      "mean": 0.0001,
+      "std": 0.0038
+     },
+     {
+      "feature": "Sleep Duration",
+      "mean": -0.0008,
+      "std": 0.0052
+     },
+     {
+      "feature": "Daily Steps",
+      "mean": -0.0009,
+      "std": 0.0039
+     },
+     {
+      "feature": "Physical Activity Level",
+      "mean": -0.0011,
+      "std": 0.004
+     },
+     {
+      "feature": "Occupation",
+      "mean": -0.0015,
+      "std": 0.0054
+     },
+     {
+      "feature": "Quality of Sleep",
+      "mean": -0.0026,
+      "std": 0.0087
+     }
+    ],
+    "roc": {
+     "fpr": [
+      0.0,
+      0.0,
+      0.027,
+      0.027,
+      0.027,
+      0.027,
+      0.027,
+      0.027,
+      0.027,
+      0.0811,
+      0.1081,
+      0.2162,
+      0.2703,
+      0.3514,
+      0.3784,
+      0.4324,
+      0.4595,
+      0.6216,
+      0.973,
+      1.0
+     ],
+     "tpr": [
+      0.0,
+      0.0385,
+      0.4231,
+      0.4615,
+      0.6923,
+      0.8077,
+      0.8462,
+      0.9231,
+      0.9615,
+      0.9615,
+      0.9615,
+      0.9615,
+      0.9615,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "confusion": [
+     [
+      33,
+      4
+     ],
+     [
+      1,
+      25
+     ]
+    ]
+   },
+   "data_summary": [
+    {
+     "feature": "Age",
+     "mean_neg": 39.04,
+     "mean_pos": 46.63,
+     "median": 43.0,
+     "levels": null
+    },
+    {
+     "feature": "Gender",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Male": 189,
+      "Female": 185
+     }
+    },
+    {
+     "feature": "Occupation",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Nurse": 73,
+      "Doctor": 71,
+      "Engineer": 67,
+      "Lawyer": 47,
+      "Teacher": 40,
+      "Accountant": 37,
+      "Salesperson": 34,
+      "Other": 5
+     }
+    },
+    {
+     "feature": "Sleep Duration",
+     "mean_neg": 7.36,
+     "mean_pos": 6.81,
+     "median": 7.2,
+     "levels": null
+    },
+    {
+     "feature": "Quality of Sleep",
+     "mean_neg": 7.63,
+     "mean_pos": 6.87,
+     "median": 7.0,
+     "levels": null
+    },
+    {
+     "feature": "Physical Activity Level",
+     "mean_neg": 57.95,
+     "mean_pos": 60.9,
+     "median": 60.0,
+     "levels": null
+    },
+    {
+     "feature": "Daily Steps",
+     "mean_neg": 6852.97,
+     "mean_pos": 6765.81,
+     "median": 7000.0,
+     "levels": null
+    },
+    {
+     "feature": "Stress Level",
+     "mean_neg": 5.11,
+     "mean_pos": 5.77,
+     "median": 5.0,
+     "levels": null
+    },
+    {
+     "feature": "BMI Category",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Normal": 216,
+      "Overweight": 148,
+      "Obese": 10
+     }
+    },
+    {
+     "feature": "Systolic",
+     "mean_neg": 124.05,
+     "mean_pos": 134.92,
+     "median": 130.0,
+     "levels": null
+    },
+    {
+     "feature": "Diastolic",
+     "mean_neg": 81.0,
+     "mean_pos": 89.81,
+     "median": 85.0,
+     "levels": null
+    },
+    {
+     "feature": "Heart Rate",
+     "mean_neg": 69.02,
+     "mean_pos": 71.79,
+     "median": 70.0,
+     "levels": null
+    }
+   ]
+  },
+  "stress": {
+   "key": "stress",
+   "name": "High-Stress Indicator",
+   "pillar": "Cognitive",
+   "dataset": "Sleep Health & Lifestyle Dataset (374 records, 132 unique profiles, 11 features)",
+   "source_url": "https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset",
+   "target": "Perceived stress \u2265 7 / 10",
+   "note": "Same data; target = perceived stress \u2265 7/10; the stress rating itself is NOT an input. Group-aware splits as above.",
+   "n": 374,
+   "n_features": 11,
+   "n_pos": 120,
+   "prevalence": 0.3209,
+   "n_train": 288,
+   "n_test": 86,
+   "best_model": "SVM (RBF)",
+   "best_params": {
+    "C": 5,
+    "gamma": "scale"
+   },
+   "models": [
+    {
+     "name": "Baseline (majority class)",
+     "cv_auc_mean": 0.5,
+     "cv_auc_std": 0.0,
+     "best_params": {},
+     "test": {
+      "accuracy": 0.6744,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "brier": 0.2196,
+      "tn": 58,
+      "fp": 0,
+      "fn": 28,
+      "tp": 0
+     }
+    },
+    {
+     "name": "Logistic Regression",
+     "cv_auc_mean": 0.9994,
+     "cv_auc_std": 0.0011,
+     "best_params": {
+      "C": 10
+     },
+     "test": {
+      "accuracy": 0.9651,
+      "precision": 0.9032,
+      "recall": 1.0,
+      "specificity": 0.9483,
+      "f1": 0.9492,
+      "roc_auc": 0.9988,
+      "brier": 0.0287,
+      "tn": 55,
+      "fp": 3,
+      "fn": 0,
+      "tp": 28
+     }
+    },
+    {
+     "name": "Random Forest",
+     "cv_auc_mean": 0.9989,
+     "cv_auc_std": 0.0013,
+     "best_params": {
+      "max_depth": null,
+      "min_samples_leaf": 3,
+      "n_estimators": 300
+     },
+     "test": {
+      "accuracy": 0.9884,
+      "precision": 0.9655,
+      "recall": 1.0,
+      "specificity": 0.9828,
+      "f1": 0.9825,
+      "roc_auc": 1.0,
+      "brier": 0.0089,
+      "tn": 57,
+      "fp": 1,
+      "fn": 0,
+      "tp": 28
+     }
+    },
+    {
+     "name": "Gradient Boosting",
+     "cv_auc_mean": 0.9939,
+     "cv_auc_std": 0.0087,
+     "best_params": {
+      "learning_rate": 0.1,
+      "max_depth": 3,
+      "n_estimators": 200
+     },
+     "test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "brier": 0.0,
+      "tn": 58,
+      "fp": 0,
+      "fn": 0,
+      "tp": 28
+     }
+    },
+    {
+     "name": "SVM (RBF)",
+     "cv_auc_mean": 0.9995,
+     "cv_auc_std": 0.0011,
+     "best_params": {
+      "C": 5,
+      "gamma": "scale"
+     },
+     "test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "specificity": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "brier": 0.0024,
+      "tn": 58,
+      "fp": 0,
+      "fn": 0,
+      "tp": 28
+     }
+    },
+    {
+     "name": "Neural Network (MLP)",
+     "cv_auc_mean": 0.9989,
+     "cv_auc_std": 0.0013,
+     "best_params": {
+      "alpha": 0.001,
+      "hidden_layer_sizes": [
+       64,
+       32
+      ]
+     },
+     "test": {
+      "accuracy": 0.9651,
+      "precision": 0.9032,
+      "recall": 1.0,
+      "specificity": 0.9483,
+      "f1": 0.9492,
+      "roc_auc": 1.0,
+      "brier": 0.0274,
+      "tn": 55,
+      "fp": 3,
+      "fn": 0,
+      "tp": 28
+     }
+    }
+   ],
+   "final": {
+    "test": {
+     "accuracy": 1.0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "specificity": 1.0,
+     "f1": 1.0,
+     "roc_auc": 1.0,
+     "brier": 0.0024,
+     "tn": 58,
+     "fp": 0,
+     "fn": 0,
+     "tp": 28
+    },
+    "ci": {
+     "roc_auc": [
+      0.9999999999999999,
+      1.0
+     ],
+     "accuracy": [
+      1.0,
+      1.0
+     ],
+     "recall": [
+      1.0,
+      1.0
+     ]
+    },
+    "repeated_cv": {
+     "accuracy": {
+      "mean": 0.9759,
+      "std": 0.0387
+     },
+     "precision": {
+      "mean": 0.9757,
+      "std": 0.0302
+     },
+     "recall": {
+      "mean": 0.9472,
+      "std": 0.1048
+     },
+     "f1": {
+      "mean": 0.9589,
+      "std": 0.069
+     },
+     "roc_auc": {
+      "mean": 0.9987,
+      "std": 0.0033
+     }
+    },
+    "calibration": [
+     {
+      "pred": 0.0087,
+      "obs": 0.0,
+      "n": 192
+     },
+     {
+      "pred": 0.6678,
+      "obs": 0.875,
+      "n": 8
+     },
+     {
+      "pred": 0.9771,
+      "obs": 1.0,
+      "n": 84
+     }
+    ],
+    "importance": [
+     {
+      "feature": "Quality of Sleep",
+      "mean": 0.034,
+      "std": 0.0147
+     },
+     {
+      "feature": "Heart Rate",
+      "mean": 0.0221,
+      "std": 0.0111
+     },
+     {
+      "feature": "Age",
+      "mean": 0.0093,
+      "std": 0.0052
+     },
+     {
+      "feature": "Daily Steps",
+      "mean": 0.0016,
+      "std": 0.0013
+     },
+     {
+      "feature": "Systolic",
+      "mean": 0.0003,
+      "std": 0.0005
+     },
+     {
+      "feature": "BMI Category",
+      "mean": 0.0002,
+      "std": 0.0003
+     },
+     {
+      "feature": "Physical Activity Level",
+      "mean": 0.0001,
+      "std": 0.0003
+     },
+     {
+      "feature": "Gender",
+      "mean": 0.0,
+      "std": 0.0
+     },
+     {
+      "feature": "Occupation",
+      "mean": 0.0,
+      "std": 0.0
+     },
+     {
+      "feature": "Sleep Duration",
+      "mean": 0.0,
+      "std": 0.0
+     },
+     {
+      "feature": "Diastolic",
+      "mean": 0.0,
+      "std": 0.0
+     }
+    ],
+    "roc": {
+     "fpr": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0172,
+      0.0517,
+      0.0862,
+      0.3276,
+      0.4655,
+      0.5172,
+      0.5517,
+      0.6724,
+      0.7414,
+      0.7759,
+      0.7931,
+      0.8276,
+      0.9483,
+      1.0
+     ],
+     "tpr": [
+      0.0,
+      0.3929,
+      0.7857,
+      0.9286,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    },
+    "confusion": [
+     [
+      58,
+      0
+     ],
+     [
+      0,
+      28
+     ]
+    ]
+   },
+   "data_summary": [
+    {
+     "feature": "Age",
+     "mean_neg": 42.76,
+     "mean_pos": 40.97,
+     "median": 43.0,
+     "levels": null
+    },
+    {
+     "feature": "Gender",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Male": 189,
+      "Female": 185
+     }
+    },
+    {
+     "feature": "Occupation",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Nurse": 73,
+      "Doctor": 71,
+      "Engineer": 67,
+      "Lawyer": 47,
+      "Teacher": 40,
+      "Accountant": 37,
+      "Salesperson": 34,
+      "Other": 5
+     }
+    },
+    {
+     "feature": "Sleep Duration",
+     "mean_neg": 7.56,
+     "mean_pos": 6.22,
+     "median": 7.2,
+     "levels": null
+    },
+    {
+     "feature": "Quality of Sleep",
+     "mean_neg": 7.97,
+     "mean_pos": 5.92,
+     "median": 7.0,
+     "levels": null
+    },
+    {
+     "feature": "Physical Activity Level",
+     "mean_neg": 62.42,
+     "mean_pos": 52.3,
+     "median": 60.0,
+     "levels": null
+    },
+    {
+     "feature": "Daily Steps",
+     "mean_neg": 6826.77,
+     "mean_pos": 6795.83,
+     "median": 7000.0,
+     "levels": null
+    },
+    {
+     "feature": "BMI Category",
+     "mean_neg": null,
+     "mean_pos": null,
+     "median": null,
+     "levels": {
+      "Normal": 216,
+      "Overweight": 148,
+      "Obese": 10
+     }
+    },
+    {
+     "feature": "Systolic",
+     "mean_neg": 127.25,
+     "mean_pos": 131.32,
+     "median": 130.0,
+     "levels": null
+    },
+    {
+     "feature": "Diastolic",
+     "mean_neg": 83.8,
+     "mean_pos": 86.45,
+     "median": 85.0,
+     "levels": null
+    },
+    {
+     "feature": "Heart Rate",
+     "mean_neg": 68.46,
+     "mean_pos": 73.77,
+     "median": 70.0,
+     "levels": null
+    }
+   ]
+  }
+ },
+ "eeg_study": {
+  "dataset": "UCI EEG Eye State (14,980 samples)",
+  "results": {
+   "kNN": {
+    "random_split": {
+     "accuracy": 0.9393,
+     "roc_auc": 0.987
+    },
+    "blocked_split": {
+     "accuracy": 0.3969,
+     "roc_auc": 0.6253
+    }
+   },
+   "Random Forest": {
+    "random_split": {
+     "accuracy": 0.9138,
+     "roc_auc": 0.9776
+    },
+    "blocked_split": {
+     "accuracy": 0.4385,
+     "roc_auc": 0.6504
+    }
+   }
+  }
+ }
+}

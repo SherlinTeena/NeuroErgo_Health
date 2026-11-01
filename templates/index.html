@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NeuroErgo Health — AI workplace wellness</title>
+<meta name="description" content="Machine-learning health screening and live environment monitoring for healthier work.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e7c86'/%3E%3Cpath d='M6 17h5l3-8 4 15 3-9 2 2h3' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="app">
+  <aside class="side" id="side">
+    <div class="brand"><span class="logo" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28"><rect width="32" height="32" rx="8" fill="currentColor"/><path d="M6 17h5l3-8 4 15 3-9 2 2h3" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><b>NeuroErgo</b><span>Health</span></div></div>
+    <nav id="nav" aria-label="Main">
+      <a href="#dashboard" data-tab="dashboard"><i>▦</i>Dashboard</a>
+      <a href="#lifestyle" data-tab="lifestyle"><i>☾</i>Sleep &amp; Stress Risk</a>
+      <a href="#mental" data-tab="mental"><i>✦</i>Mental Well-being</a>
+      <a href="#environment" data-tab="environment"><i>☁</i>Live Environment</a>
+      <a href="#coach" data-tab="coach"><i>♥</i>Wellness Coach</a>
+      <a href="#tools" data-tab="tools"><i>⚖</i>Health Tools</a>
+      <a href="#lab" data-tab="lab"><i>⚗</i>Model Lab</a>
+      <a href="#history" data-tab="history"><i>◷</i>My History</a>
+      <a href="#about" data-tab="about"><i>ⓘ</i>About</a>
+    </nav>
+    <div class="side-note"><b>Private by design.</b> Your answers stay in this browser. Models run on this server — no third-party AI services.</div>
+  </aside>
+
+  <div class="content">
+    <header class="top">
+      <div><h1 id="pageTitle">Dashboard</h1><p id="pageSub" class="muted"></p></div>
+      <div class="top-r"><span class="chip" id="clock"></span><span class="chip" id="apiStatus">● connecting…</span></div>
+    </header>
+    <main id="main" tabindex="-1">
+
+      <!-- DASHBOARD -->
+      <section id="tab-dashboard" class="tab">
+        <div class="grid hero">
+          <div class="card index-card">
+            <div class="card-h"><h2>Workplace Wellness Index</h2><button class="btn ghost sm" id="refreshIndex">Recalculate</button></div>
+            <div class="index-body"><div id="indexGauge"></div><div id="indexText"></div></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><h2>Priorities for today</h2></div>
+            <ol id="priorities" class="plain"></ol>
+          </div>
+        </div>
+        <div class="grid four" id="pillars"></div>
+        <div class="grid two">
+          <div class="card"><div class="card-h"><h2>Live environment</h2><a href="#environment" class="link">Open →</a></div><div id="dashEnv" class="muted">Loading…</div></div>
+          <div class="card"><div class="card-h"><h2>Trained models powering this app</h2><a href="#lab" class="link">Model Lab →</a></div><div id="dashModels"></div></div>
+        </div>
+        <div class="notice">NeuroErgo Health is a wellness-screening and education tool. It does not diagnose or treat any condition. If you feel unwell, seek care from a qualified clinician.</div>
+      </section>
+
+      <!-- LIFESTYLE -->
+      <section id="tab-lifestyle" class="tab">
+        <div class="split">
+          <form class="card form" id="form-sleep" novalidate>
+            <div class="card-h"><h2>Your sleep, activity &amp; vitals</h2>
+              <div class="btn-row"><button type="button" class="btn ghost sm" data-ex="low">Example: low risk</button><button type="button" class="btn ghost sm" data-ex="high">Example: high risk</button></div></div>
+            <p class="muted">Two models trained on the Sleep Health &amp; Lifestyle dataset estimate your <b>sleep-disorder risk</b> and a <b>high-stress indicator</b>.</p>
+            <div class="fields"></div>
+            <div class="btn-row sticky"><button class="btn primary" type="submit">Analyse my health</button><button class="btn ghost" type="reset">Reset</button></div>
+          </form>
+          <div id="res-sleep" class="results"><div class="empty card"><h3>Your results appear here</h3><p class="muted">Fill in the form (or load an example) and press <b>Analyse my health</b>. You will see risk levels, the factors behind them, and a personal action plan.</p></div></div>
+        </div>
+      </section>
+
+      <!-- MENTAL -->
+      <section id="tab-mental" class="tab">
+        <div class="split">
+          <form class="card form" id="form-mental" novalidate>
+            <div class="card-h"><h2>Work &amp; well-being questionnaire</h2>
+              <div class="btn-row"><button type="button" class="btn ghost sm" data-ex="low">Example: lower need</button><button type="button" class="btn ghost sm" data-ex="high">Example: higher need</button></div></div>
+            <p class="muted">A model trained on the OSMI workplace mental-health survey compares your situation with 1,246 real respondents. It is a <b>support-need indicator, not a diagnosis</b>.</p>
+            <div class="fields"></div>
+            <div class="btn-row sticky"><button class="btn primary" type="submit">Check my support need</button><button class="btn ghost" type="reset">Reset</button></div>
+          </form>
+          <div id="res-mental" class="results"><div class="empty card"><h3>Your results appear here</h3><p class="muted">Answers are optional-style survey questions; choose “Don’t know” where unsure.</p></div></div>
+        </div>
+      </section>
+
+      <!-- ENVIRONMENT -->
+      <section id="tab-environment" class="tab">
+        <div class="card">
+          <div class="card-h"><h2>Location</h2><span class="muted" id="envUpdated"></span></div>
+          <form id="locForm" class="loc-form">
+            <input id="locInput" type="search" placeholder="Search a city, e.g. Coimbatore" aria-label="Search city" autocomplete="off">
+            <button class="btn primary" type="submit">Search</button>
+            <button class="btn ghost" type="button" id="geoBtn">Use my location</button>
+            <button class="btn ghost" type="button" id="envRefresh">Refresh</button>
+          </form>
+          <div id="locResults" class="loc-results"></div>
+          <div id="envBanner"></div>
+        </div>
+        <div class="grid four" id="envCards"></div>
+        <div class="grid two">
+          <div class="card"><div class="card-h"><h2>Next 24 hours</h2></div><div id="envChart"></div></div>
+          <div class="card">
+            <div class="card-h"><h2>Workspace comfort score</h2></div>
+            <p class="muted">Outdoor data is live. Add your own <b>indoor</b> readings (optional) for a more accurate score.</p>
+            <div class="mini-form" id="indoorForm">
+              <label>Indoor temp (°C)<input type="number" id="in_temp" step="0.1" placeholder="auto"></label>
+              <label>Indoor humidity (%)<input type="number" id="in_hum" step="1" placeholder="auto"></label>
+              <label>CO₂ (ppm)<input type="number" id="in_co2" step="10" placeholder="optional"></label>
+              <label>Desk light (lux)<input type="number" id="in_lux" step="10" placeholder="optional"></label>
+            </div>
+            <button class="btn primary" id="envScoreBtn">Calculate comfort</button>
+            <div id="envScore"></div>
+          </div>
+        </div>
+        <div class="card"><div class="card-h"><h2>Nearby hospitals</h2><button class="btn ghost sm" id="hospBtn">Find hospitals near this location</button></div><div id="hospList" class="muted">Uses OpenStreetMap data. In an emergency call your local emergency number (India: 112).</div></div>
+      </section>
+
+      <!-- COACH -->
+      <section id="tab-coach" class="tab">
+        <div class="grid two">
+          <div class="card">
+            <div class="card-h"><h2>Break timer</h2><span class="muted" id="breakStats"></span></div>
+            <div class="seg" id="timerModes"></div>
+            <div class="timer"><div id="timerRing"></div></div>
+            <div class="btn-row center"><button class="btn primary" id="timerStart">Start</button><button class="btn ghost" id="timerReset">Reset</button><button class="btn ghost" id="notifyBtn">Enable alerts</button></div>
+            <p class="muted small" id="timerHint"></p>
+          </div>
+          <div class="card">
+            <div class="card-h"><h2>Guided desk exercises</h2></div>
+            <div id="exercises"></div>
+          </div>
+        </div>
+        <div class="grid two">
+          <div class="card">
+            <div class="card-h"><h2>Workstation ergonomics check</h2><span class="muted small">Physical ergonomics</span></div>
+            <div id="ergoList" class="checks"></div>
+            <button class="btn primary" id="ergoBtn">Score my workstation</button>
+            <div id="ergoRes"></div>
+          </div>
+          <div class="card chat">
+            <div class="card-h"><h2>Wellness coach</h2><span class="muted small">Rule-based · uses your results</span></div>
+            <div id="chatLog" class="chat-log" aria-live="polite"></div>
+            <div class="chips" id="chatChips"></div>
+            <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask about sleep, stress, posture, breaks…" aria-label="Message"><button class="btn primary" type="submit">Send</button></form>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section id="tab-tools" class="tab">
+        <div class="grid two">
+          <div class="card">
+            <div class="card-h"><h2>BMI calculator</h2></div>
+            <div class="mini-form"><label>Weight (kg)<input type="number" id="bmi_w" value="68" min="20" max="300" step="0.1"></label><label>Height (cm)<input type="number" id="bmi_h" value="170" min="100" max="230" step="0.5"></label></div>
+            <div id="bmiOut"></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><h2>Blood-pressure classifier</h2></div>
+            <div class="mini-form"><label>Systolic (mm Hg)<input type="number" id="bp_s" value="118" min="70" max="260"></label><label>Diastolic (mm Hg)<input type="number" id="bp_d" value="76" min="40" max="160"></label></div>
+            <div id="bpOut"></div>
+          </div>
+        </div>
+        <div class="card"><div class="card-h"><h2>Quick reference</h2></div>
+          <div class="grid three ref">
+            <div><h3>Sleep</h3><p class="muted">Most adults: 7–9 hours. Keep a regular schedule and avoid caffeine after midday.</p></div>
+            <div><h3>Activity</h3><p class="muted">WHO: 150–300 min/week moderate activity plus muscle strengthening twice a week.</p></div>
+            <div><h3>Screen breaks</h3><p class="muted">20-20-20: every 20 minutes look at something 20 feet (6 m) away for 20 seconds.</p></div>
+          </div></div>
+      </section>
+
+      <!-- LAB -->
+      <section id="tab-lab" class="tab">
+        <div class="seg" id="labSeg"></div>
+        <div id="labBody"></div>
+      </section>
+
+      <!-- HISTORY -->
+      <section id="tab-history" class="tab">
+        <div class="grid two">
+          <div class="card"><div class="card-h"><h2>Wellness Index trend</h2></div><div id="histChart"></div></div>
+          <div class="card"><div class="card-h"><h2>Your profile</h2></div>
+            <label class="mini-form one">Display name<input id="profName" placeholder="Optional" maxlength="40"></label>
+            <div class="btn-row"><button class="btn ghost" id="exportCsv">Export CSV</button><button class="btn ghost" id="printBtn">Print report</button><button class="btn danger" id="clearBtn">Delete all my data</button></div>
+            <p class="muted small">Everything is stored only in this browser (localStorage). Clearing it removes your history permanently.</p></div>
+        </div>
+        <div class="card"><div class="card-h"><h2>Assessment log</h2></div><div id="histTable"></div></div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="tab-about" class="tab"><div id="aboutBody"></div></section>
+    </main>
+    <footer class="foot">NeuroErgo Health · Division of AI &amp; ML, Karunya Institute of Technology and Sciences · Educational prototype — not a medical device.</footer>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+================================================================================
+MENTAL WELL-BEING SUPPORT NEED  —  OSMI Mental Health in Tech Survey 2014 (1,259 workers, 15 features)
+================================================================================
+samples=1246  features=15  positives=630 (50.6%)
+  Ages outside 18-75 removed; gender mapped to 3 groups; exact duplicate respondents dropped; 'work_interfere' excluded as a target proxy.
+  Logistic Regression    CV-AUC 0.7589±0.0249 | test acc 0.716 AUC 0.790 recall 0.675 spec 0.758
+  Random Forest          CV-AUC 0.7683±0.0203 | test acc 0.712 AUC 0.766 recall 0.675 spec 0.750
+  Gradient Boosting      CV-AUC 0.7596±0.0262 | test acc 0.712 AUC 0.795 recall 0.698 spec 0.726
+  SVM (RBF)              CV-AUC 0.7706±0.0254 | test acc 0.712 AUC 0.786 recall 0.690 spec 0.734
+  Neural Network (MLP)   CV-AUC 0.6976±0.0267 | test acc 0.660 AUC 0.681 recall 0.635 spec 0.685
+  >> selected by CV: SVM (RBF)
+  repeated 5x3 CV: {'accuracy': '0.714±0.022', 'precision': '0.722±0.028', 'recall': '0.708±0.039', 'f1': '0.714±0.024', 'roc_auc': '0.779±0.016'}
+  FINAL TEST  acc=0.712  AUC=0.786 (95% CI 0.730-0.840)  recall=0.690  spec=0.734  F1=0.707  Brier=0.189
+
+================================================================================
+SLEEP-DISORDER RISK  —  Sleep Health & Lifestyle Dataset (374 records, 132 unique profiles, 12 features)
+================================================================================
+samples=374  features=12  positives=155 (41.4%)
+  374 rows contain only 132 distinct profiles; identical profiles are kept in the same CV/test fold (group-aware) to prevent leakage.
+  Logistic Regression    CV-AUC 0.9423±0.0245 | test acc 0.921 AUC 0.968 recall 0.962 spec 0.892
+  Random Forest          CV-AUC 0.9329±0.0369 | test acc 0.937 AUC 0.956 recall 0.962 spec 0.919
+  Gradient Boosting      CV-AUC 0.9174±0.0457 | test acc 0.968 AUC 0.963 recall 0.962 spec 0.973
+  SVM (RBF)              CV-AUC 0.9412±0.0233 | test acc 0.921 AUC 0.970 recall 0.962 spec 0.892
+  Neural Network (MLP)   CV-AUC 0.9308±0.0404 | test acc 0.937 AUC 0.964 recall 0.962 spec 0.919
+  >> selected by CV: Logistic Regression
+  repeated 5x3 CV: {'accuracy': '0.928±0.029', 'precision': '0.908±0.053', 'recall': '0.923±0.056', 'f1': '0.914±0.035', 'roc_auc': '0.934±0.036'}
+  FINAL TEST  acc=0.921  AUC=0.968 (95% CI 0.914-1.000)  recall=0.962  spec=0.892  F1=0.909  Brier=0.052
+
+================================================================================
+HIGH-STRESS INDICATOR  —  Sleep Health & Lifestyle Dataset (374 records, 132 unique profiles, 11 features)
+================================================================================
+samples=374  features=11  positives=120 (32.1%)
+  Same data; target = perceived stress ≥ 7/10; the stress rating itself is NOT an input. Group-aware splits as above.
+  Logistic Regression    CV-AUC 0.9994±0.0011 | test acc 0.965 AUC 0.999 recall 1.000 spec 0.948
+  Random Forest          CV-AUC 0.9989±0.0013 | test acc 0.988 AUC 1.000 recall 1.000 spec 0.983
+  Gradient Boosting      CV-AUC 0.9939±0.0087 | test acc 1.000 AUC 1.000 recall 1.000 spec 1.000
+  SVM (RBF)              CV-AUC 0.9995±0.0011 | test acc 1.000 AUC 1.000 recall 1.000 spec 1.000
+  Neural Network (MLP)   CV-AUC 0.9989±0.0013 | test acc 0.965 AUC 1.000 recall 1.000 spec 0.948
+  >> selected by CV: SVM (RBF)
+  repeated 5x3 CV: {'accuracy': '0.976±0.039', 'precision': '0.976±0.030', 'recall': '0.947±0.105', 'f1': '0.959±0.069', 'roc_auc': '0.999±0.003'}
+  FINAL TEST  acc=1.000  AUC=1.000 (95% CI 1.000-1.000)  recall=1.000  spec=1.000  F1=1.000  Brier=0.002
+
+================================================================================
+EEG EYE-STATE LEAKAGE STUDY (UCI, 14 channels, 14,980 samples @128 Hz)
+================================================================================
+  kNN            random-sample split: acc 0.939 AUC 0.987 | time-blocked split: acc 0.397 AUC 0.625
+  Random Forest  random-sample split: acc 0.914 AUC 0.978 | time-blocked split: acc 0.439 AUC 0.650
+  -> near-perfect scores with random splits are an autocorrelation artefact; with leakage-free blocks the model is ~chance, so no EEG model is deployed.
+
+Done in 114s -> models/*.joblib, models/metrics.json, reports/*.png
